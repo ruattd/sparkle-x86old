@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'Tag version to release'
+        description: "Tag version to release"
         required: false
   push:
     branches:
@@ -12,14 +12,15 @@ on:
     tags:
       - v*
     paths-ignore:
-      - 'README.md'
-      - '.github/ISSUE_TEMPLATE/**'
-      - '.github/workflows/issues.yml'
+      - "README.md"
+      - ".github/ISSUE_TEMPLATE/**"
+      - ".github/workflows/issues.yml"
 
 jobs:
   build:
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         include:
           - os: windows-latest
@@ -263,8 +264,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
         with:
-          fetch-depth: '0'
-          fetch-tags: 'true'
+          fetch-depth: "0"
+          fetch-tags: "true"
 
       - name: Setup Node
         uses: actions/setup-node@v6
